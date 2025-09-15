@@ -1,0 +1,51 @@
+name: Render and Publish Quarto PDF
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  render-pdf:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Cache TinyTeX
+        id: cache-tinytex
+        uses: actions/cache@v4
+        with:
+          path: ~/.TinyTeX
+          key: ${{ runner.os }}-tinytex
+      
+      - name: Install TinyTeX if not cached
+        if: steps.cache-tinytex.outputs.cache-hit != 'true'
+        run: quarto install tool tinytex
+
+      - name: Render Quarto to PDF
+        run: quarto render index.qmd --to pdf --use-freezer --output-dir public
+
+      - name: Rename PDF
+        run: mv public/index.pdf public/preview.pdf
+
+      - name: Deploy PDF to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: public
+          keep_files: true
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: |
+            ✅ PDF preview is ready: [preview.pdf](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/preview.pdf)
