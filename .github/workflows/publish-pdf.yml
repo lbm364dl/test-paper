@@ -22,12 +22,12 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-luatex
 
       - name: Render Quarto to PDF
-        run: quarto render index.qmd --to pdf --use-freezer
+        run: quarto render index.qmd --to pdf --use-freezer --output-dir public
 
       - name: Deploy PDF to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: .
+          publish_dir: public
           keep_files: true
