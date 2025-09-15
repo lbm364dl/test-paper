@@ -1,0 +1,33 @@
+name: Render and Publish Quarto PDF
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  render-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: stable
+
+      - name: Install LaTeX (for PDF rendering)
+        run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended
+
+      - name: Render Quarto to PDF
+        run: quarto render index.qmd --to pdf
+
+      - name: Deploy PDF to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: .
+          keep_files: true
