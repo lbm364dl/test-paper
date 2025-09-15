@@ -12,7 +12,7 @@
 #   -> Download JSON
 
 # Full path to your downloaded JSON (it contains the credentials)
-json_path <- "~/Downloads/client_secret_id.json"
+json_path <- "trackdown_access.json"
 # If you don't configure auth, when prompted to login with a Google account,
 # you may otherwise get a Google error "This app is blocked"
 trackdown::trackdown_auth_configure(path = json_path)
