@@ -1,9 +1,11 @@
 {
-  "hash": "fcbaba04839fcbe36f0622fc45f19736",
+  "hash": "da77760710d4c77f66a8f014007cba51",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: test-paper\nauthors:\n  - name: Norah Jones\n    affiliation: The University\n    roles: writing\n    corresponding: true\nbibliography: references.bib\n---\n\n## Section\nThis is a simple placeholder for the manuscript's main document [@knuth84].\n\n\n::: {.cell}\n\n```{.r .cell-code .hidden}\n# This is code\na <- 1 + 2\nprint(a)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 3\n```\n\n\n:::\n:::\n\n\nThis is new [test image](./test.png)\nThis is new content. Please. Please accept it.\nPlease.\n\nHola\n\nAdios\n\n",
-    "supporting": [],
+    "markdown": "---\ntitle: test-paper\nauthors:\n  - name: Norah Jones\n    affiliation: The University\n    roles: writing\n    corresponding: true\nbibliography: references.bib\n---\n\n## Section\nThis is a simple placeholder for the manuscript's main document [@knuth84].\n\n\n::: {.cell}\n\n```{.r .cell-code .hidden}\n# This is code\na <- 1 + 2\nprint(a)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 3\n```\n\n\n:::\n:::\n\n\nThis is new \n![test image](./test.png)\nThis is new content. Please. Please accept it.\nPlease.\n\nHola\n\nAdios\n\n",
+    "supporting": [
+      "index_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
