@@ -17,7 +17,7 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Install LaTeX (for PDF rendering)
-        run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended
+        run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-luatex
 
       - name: Render Quarto to PDF
         run: quarto render index.qmd --to pdf --use-freezer
