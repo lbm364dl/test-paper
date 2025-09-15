@@ -20,7 +20,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended
 
       - name: Render Quarto to PDF
-        run: quarto render index.qmd --to pdf
+        run: quarto render index.qmd --to pdf --use-freezer
 
       - name: Deploy PDF to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
