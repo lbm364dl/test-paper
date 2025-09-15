@@ -26,6 +26,11 @@ If you need some help to write the content of the paper or just some feedback fr
 
 You will be responsible for syncing both places, but luckily it's quite easy with the [trackdown](https://claudiozandonella.github.io/trackdown/) R package.
 
+There are three functions you most likely need. Be careful! They overwrite everything, but ask you before just to confirm.
+  - `trackdown::upload_file("index.qmd")`: Only the first time, when the file still doesn't exist in Google Docs.
+  - `trackdown::update_file("index.qmd")`: Every time you make a change in this project and you want to update the Google doc.
+  - `trackdown::download_file("index.qmd")`: Every time changes were made in the Google doc and *all* of the suggestions were resolved (accepted/rejected), if you want to update this project with its content.
+
 ## (Optional) Don't die configuring trackdown
 
 If you want collaborators to suggest changes in a Google Docs, you will need a few one time configuration steps so that trackdown can read/write your files. Of course, this is only if you trust it! The trackdown package is open-source, so you could check that [nothing fishy is going on](https://github.com/ClaudioZandonella/trackdown).
@@ -39,10 +44,7 @@ If you want collaborators to suggest changes in a Google Docs, you will need a f
   - Click create
   - Download JSON with credentials. The name should be something like `client_secret_some_long_code.apps.googleusercontent.com.json`.
 3. Use credentials. Put this JSON file in this main folder and rename as `trackdown_access.json`. This is read from `.Rprofile` every time you open an R session here. When using trackdown update/download functions, the first time you will be asked to grant access.
-4. Use trackdown! There are three functions you most likely need. Be careful! They overwrite everything, but ask you before just to confirm.
-  - `trackdown::upload_file("index.qmd")`: Only the first time, when the file still doesn't exist in Google Docs.
-  - `trackdown::update_file("index.qmd")`: Every time you make a change in this project and you want to update the Google doc.
-  - `trackdown::download_file("index.qmd")`: Every time changes were made in the Google doc and *all* of the suggestions were resolved (accepted/rejected), if you want to update this project with its content.
+4. Use trackdown! Check the previous section for functions summary.
 
 ## Sync workflow and automatic previews
 
