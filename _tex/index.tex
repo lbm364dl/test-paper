@@ -215,12 +215,18 @@ This is a simple placeholder for the manuscript's main document (Knuth
 Notebook}}
 
 This is new
-\pandocbounded{\includegraphics[keepaspectratio]{./test.png}} This is
-new content. Please. Please accept it. Please.
 
-Hola
+\begin{figure}[H]
 
-Adios
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{./test.png}}
+
+}
+
+\caption{test image}
+
+\end{figure}%
+
+This is new content. Please. Please accept it. Please.
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
