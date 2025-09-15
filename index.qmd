@@ -9,7 +9,7 @@ bibliography: references.bib
 ---
 
 ## Section
-This is a simple placeholder[a] for the manuscript's main document [@knuth84].
+This is a simple placeholder for the manuscript's main document [@knuth84].
 
 ```{r}
 # This is code
@@ -21,8 +21,5 @@ This is new
 
 ![test image](./test.png)
 
-This is new content[b]. Please. Please accept it.
+This is new content. Please. Please accept it.
 Please.
-
-[a]this is my comment
-[b]You're right.
