@@ -19,7 +19,7 @@ print(a)
 
 This is new 
 
-![test image](./test.png)
+![test image](imgs/test.png)
 
 This is new content. Please. Please accept it.
 Please.
