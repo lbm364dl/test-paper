@@ -30,7 +30,7 @@ jobs:
         run: quarto install tool tinytex
 
       - name: Render Quarto to PDF
-        run: quarto render index.qmd --to pdf --use-freezer --output-dir public
+        run: quarto render index.qmd --use-freezer --output-dir public
 
       - name: Deploy PDF to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

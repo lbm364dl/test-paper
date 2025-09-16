@@ -4,8 +4,11 @@ project:
 manuscript:
   article: index.qmd
 
-format:
-  pdf: default
+format: 
+  elsevier-pdf:
+    journal:
+      model: 5p
+      cite-style: authoryear
 
 execute:
   freeze: auto
