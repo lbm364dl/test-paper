@@ -1,6 +1,14 @@
 This README is a work in progress.
 
-Papers can be reproducible. You can (and should) have everything necessary in one place.
+Papers can be reproducible. You can (and should) have everything necessary to generate your paper in one place. This is the place.
+
+## TLDR: How to use this
+
+1. You write your paper in `index.qmd`. This is a [Quarto](https://quarto.org/) file. Just go and take a look. Make some edits. You'll figure out the details.
+2. You get your PDF by running `quarto render` in your terminal or clicking [some render button in your RStudio](https://quarto.org/docs/get-started/hello/rstudio.html#rendering). You might need to first [install Quarto](https://quarto.org/docs/get-started/).
+3. You check the output PDF in `_manuscript/index.pdf`. If you're not satisfied, go back to step 1.
+4. (Optional) Your collaborators don't know anything about git or coding but want to make suggestions. Just send them a Google Docs link and then you [take care of syncing both places](#sync-workflow-and-automatic-previews). OK, this one needs a bit of configuration to set up. If you need it, go read from [this section below](#allow-collaborator-editing-with-trackdown).
+5. (Optional) Some researcher wants to reproduce your work. Just send them a link to your GitHub repository. Seriously, that's all. OK, for this to be bullet-proof, you need to be careful on how you set up package dependencies if you write R code. See [reproducibility with renv](#ensure-reproducibility-with-renv).
 
 ## Write a paper with Quarto
 
