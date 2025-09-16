@@ -45,28 +45,28 @@ If you want collaborators to suggest changes in a Google Docs, you will need a f
 
 1. Open [your Google Cloud Platform project](https://console.cloud.google.com/), signed in with your desired Google account.
 2. Open [this link](https://console.cloud.google.com/auth/overview/create) to create an _app_ (whatever that means). Fill things:
-  - App Information:
-    - App name: whatever, e.g., Trackdown
-    - User support email: your own email
-  - Audience: external
-  - Contact Information: your own email
-  - Finish: agree
-  - Finally, create
+    - App Information:
+        - App name: whatever, e.g., Trackdown
+        - User support email: your own email
+    - Audience: external
+    - Contact Information: your own email
+    - Finish: agree
+    - Finally, create
 3. Open [this link](https://console.cloud.google.com/auth/audience) to add yourself as test user (whatever that means).
-  - In _Test users_, click _Add users_
-  - Add your own email
-  - Click _Save_ (twice if necessary)
+    - In _Test users_, click _Add users_
+    - Add your own email
+    - Click _Save_ (twice if necessary)
 4. Open [this link](https://console.cloud.google.com/apis/library/drive.googleapis.com) and click _Enable_ to allow programmatic access to Google Drive.
 5. Open [this link](https://console.cloud.google.com/apis/library/docs.googleapis.com) and click _Enable_ to allow programmatic access to Google Docs.
 6. Open [this link](https://console.cloud.google.com/auth/clients/create) to create an OAuth client ID (whatever that means). Fill things:
-  - Application type: Desktop app
-  - Name: whatever, e.g. Trackdown
-  - Click create
-  - Click  _Download JSON_. The name of the downloaded file should be something like `client_secret_some_long_code.apps.googleusercontent.com.json`.
+    - Application type: Desktop app
+    - Name: whatever, e.g. Trackdown
+    - Click create
+    - Click  _Download JSON_. The name of the downloaded file should be something like `client_secret_some_long_code.apps.googleusercontent.com.json`.
 7. Actually use these credentials:
-  - Put that JSON file in this main folder (the same folder where this `README.md` file is).
-  - Rename it as `trackdown_access.json`. The `.json` is the extension, and you might not need to write it if you use e.g. Windows file explorer. If something goes wrong, make sure you didn't name it `trackdown_access.json.json` by mistake.
-  - Your credentials will be read automatically from `.Rprofile` every time you open an R session here. When using trackdown update/download functions, the first time you will be asked to grant access in your browser. **Toggle the _allow access_ button before continuing**. Otherwise it won't work.
+    - Put that JSON file in this main folder (the same folder where this `README.md` file is).
+    - Rename it as `trackdown_access.json`. The `.json` is the extension, and you might not need to write it if you use e.g. Windows file explorer. If something goes wrong, make sure you didn't name it `trackdown_access.json.json` by mistake.
+    - Your credentials will be read automatically from `.Rprofile` every time you open an R session here. When using trackdown update/download functions, the first time you will be asked to grant access in your browser. **Toggle the _allow access_ button before continuing**. Otherwise it won't work.
 8. Actually use trackdown! Check the [previous section](#allow-collaborator-editing-with-trackdown) for the important functions.
 
 ## Sync workflow and automatic previews
