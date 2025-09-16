@@ -5,12 +5,12 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-  letterpaper,
-  DIV=11,
-  numbers=noendperiod]{scrartcl}
+  authoryear,
+  5p,
+  twocolumn]{elsarticle}
 \usepackage{xcolor}
 \usepackage{amsmath,amssymb}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\setcounter{secnumdepth}{5}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -133,39 +133,6 @@
 \makeatother
 
 
-% definitions for citeproc citations
-\NewDocumentCommand\citeproctext{}{}
-\NewDocumentCommand\citeproc{mm}{%
-  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
-\makeatletter
- % allow citations to break across lines
- \let\@cite@ofmt\@firstofone
- % avoid brackets around text for \cite:
- \def\@biblabel#1{}
- \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
-\makeatother
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
- {\begin{list}{}{%
-  \setlength{\itemindent}{0pt}
-  \setlength{\leftmargin}{0pt}
-  \setlength{\parsep}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1
-   \setlength{\leftmargin}{\cslhangindent}
-   \setlength{\itemindent}{-1\cslhangindent}
-  \fi
-  % set entry spacing
-  \setlength{\itemsep}{#2\baselineskip}}}
- {\end{list}}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 
 
@@ -177,9 +144,10 @@
 
 
  
+\usepackage[]{natbib}
+\bibliographystyle{elsarticle-harv}
 
 
-\KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -221,6 +189,26 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
+\usepackage{float}
+\makeatletter
+\let\oldlt\longtable
+\let\endoldlt\endlongtable
+\def\longtable{\@ifnextchar[\longtable@i \longtable@ii}
+\def\longtable@i[#1]{\begin{figure}[H]
+\onecolumn
+\begin{minipage}{0.5\textwidth}
+\oldlt[#1]
+}
+\def\longtable@ii{\begin{figure}[H]
+\onecolumn
+\begin{minipage}{0.5\textwidth}
+\oldlt
+}
+\def\endlongtable{\endoldlt
+\end{minipage}
+\twocolumn
+\end{figure}}
+\makeatother
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -237,11 +225,34 @@ economics, policy modeling},
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Sustainable Economic Models in Urban Ecosystems}
-\author{Alice Smith \and Bob Johnson \and Carol Lee}
-\date{}
+\setlength{\parindent}{6pt}
 \begin{document}
-\maketitle
+
+\begin{frontmatter}
+\title{Sustainable Economic Models in Urban Ecosystems}
+\author[1]{Alice Smith%
+%
+\fnref{fn1}}
+ \ead{alice.smith@example.com} 
+\author[2]{Bob Johnson%
+\corref{cor1}%
+}
+ \ead{bob.johnson@example.com} 
+\author[1]{Carol Lee%
+%
+}
+
+
+\affiliation[1]{organization={Department of Environmental Economics,
+University of Example},,postcodesep={}}
+\affiliation[2]{organization={Institute of Urban Studies, Example City
+University},,postcodesep={}}
+
+\cortext[cor1]{Corresponding author}
+\fntext[fn1]{These authors contributed equally.}
+
+
+        
 \begin{abstract}
 Urban ecosystems are increasingly affected by the interaction between
 economic growth and environmental sustainability. In this study, we
@@ -251,12 +262,22 @@ policy measures that balance economic and environmental objectives.
 \end{abstract}
 
 
+
+
+
+\begin{keyword}
+    urban ecosystems \sep sustainability \sep ecological economics \sep 
+    policy modeling
+\end{keyword}
+\end{frontmatter}
+    
+
 \section{Introduction}\label{introduction}
 
 Urban areas are rapidly expanding, creating pressures on local
-ecosystems (Knuth 1984). Understanding the interaction between economic
-growth and ecological sustainability is crucial for long-term urban
-planning. This paper proposes a model to assess these trade-offs.
+ecosystems \citep{knuth84}. Understanding the interaction between
+economic growth and ecological sustainability is crucial for long-term
+urban planning. This paper proposes a model to assess these trade-offs.
 
 \section{Theoretical Framework}\label{theoretical-framework}
 
@@ -309,8 +330,8 @@ analyses.
 
 \subsection{Section}\label{section}
 
-This is a simple placeholder for the manuscript's main document (Knuth
-1984).
+This is a simple placeholder for the manuscript's main document
+\citep{knuth84}.
 
 \begin{verbatim}
 [1] 3
@@ -356,14 +377,8 @@ Notebook}}
 We thank the Example Research Council for funding support and colleagues
 for valuable feedback.
 
-\phantomsection\label{refs}
-\begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-knuth84}
-Knuth, Donald E. 1984. {``Literate Programming.''} \emph{Comput. J.} 27
-(2): 97--111. \url{https://doi.org/10.1093/comjnl/27.2.97}.
 
-\end{CSLReferences}
-
+\bibliography{references.bib}
 
 
 
