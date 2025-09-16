@@ -9,7 +9,7 @@ if (file.exists(json_path)) {
     trackdown::trackdown_auth_configure(path = json_path)
   } else {
     warning(
-      "Please install trackdown for Google Docs sync. You can install everything needed by simply running renv::restore()"
+      "Please install trackdown for Google Docs sync. You can install everything needed by simply running renv::restore(). Restart the R session after everything is installed."
     )
   }
 } else {
