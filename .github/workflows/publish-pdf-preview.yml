@@ -32,7 +32,7 @@ jobs:
         run: quarto install tool tinytex
 
       - name: Render Quarto to PDF
-        run: quarto render index.qmd --to pdf --use-freezer --output-dir public
+        run: quarto render index.qmd --use-freezer --output-dir public
 
       - name: Rename PDF
         run: mv public/index.pdf public/pr-${{ github.event.number }}-preview.pdf
