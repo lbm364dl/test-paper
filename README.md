@@ -4,13 +4,13 @@ Papers can be reproducible. You can (and should) have everything necessary to ge
 
 ## TLDR: How to use this
 
-1. If you use RStudio, you can open this as an RStudio project. Otherwise you probably know what you're doing.
-2. You write your paper in `index.qmd`. This is a [Quarto](https://quarto.org/) file. Just go and take a look. Make some edits. You'll figure out the details.
-3. [Install Quarto](https://quarto.org/docs/get-started/).
-4. Open a command line and run `quarto install tinytex`. Quarto first converts your file to [LaTeX](https://en.wikipedia.org/wiki/LaTeX) and then uses that to generate your PDF. This command installs a minimal LaTeX.
+1. [Install Quarto](https://quarto.org/docs/get-started/).
+2. Open a command line and run `quarto install tinytex`. Quarto first converts your file to [LaTeX](https://en.wikipedia.org/wiki/LaTeX) and then uses that to generate your PDF. This command installs a minimal LaTeX.
+3. If you use RStudio, you can open this as an RStudio project. Otherwise you probably know what you're doing.
+4. You write your paper in `index.qmd`. This is a [Quarto](https://quarto.org/) file. Just go and take a look. Make some edits. You'll figure out the details.
 5. You get your PDF by running `quarto render` in your command line or clicking [some render button in your RStudio](https://quarto.org/docs/get-started/hello/rstudio.html#rendering).
 6. If you got problems with the previous step because of some missing R package, we got you covered. Just run `renv::restore()` in R to install all necessary packages!
-7. You check the output PDF in `_manuscript/index.pdf`. If you're not satisfied, go back to step 1.
+7. You check the output PDF in `_manuscript/index.pdf`. If you're not satisfied, go back to step 4. Make more changes to your `index.qmd`.
 8. (Optional) Your collaborators don't know anything about git or coding but want to make suggestions. Just send them a Google Docs link and then you [take care of syncing both places](#sync-workflow-and-automatic-previews). OK, this one needs a bit of configuration to set up. If you need it, go read about [collaborator editing with trackdown](#allow-collaborator-editing-with-trackdown).
 9. (Optional) Some researcher wants to reproduce your work. Just send them a link to your GitHub repository. Seriously, that's all. OK, for this to be bullet-proof, you need to be careful on how you set up package dependencies if you write R code in your project. See [reproducibility with renv](#ensure-reproducibility-with-renv).
 
