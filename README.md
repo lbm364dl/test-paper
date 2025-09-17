@@ -22,13 +22,21 @@ The best way to write an automated and reproducible paper is by using [Quarto](h
 - Because of the simple original format, Quarto allows you to output this not only in a common PDF, but also dozens of other formats.
 - You can customize a PDF format by defining the template used by the journals you want to publish in.
 - You can include code chunks in Quarto files and they will be executed and their output automatically included in the final document.
-- You can easily include references by defining them in `references.bib` and using their name in Quarto files.
+- You can easily include citations by defining them in `references.bib` and using their name in Quarto files.
 
-## Integrate your Zotero references seamlessly
+## Integrate your citations (e.g. Zotero) seamlessly
 
-If you know what [BibTeX](https://www.bibtex.org/) is, go ahead, see how the file `references.bib` is used. See the `[@knuth84]` usage in the sample `index.qmd`.
+If you know what [BibTeX](https://www.bibtex.org/) is, go ahead, see how the file `references.bib` is used. See the `[@knuth84]` usage in the sample `index.qmd`. You can manually add BibTeX references in there.
 
-Otherwise, if you use RStudio... TODO: explain how to configure Zotero and RStudio to directly search references from Zotero.
+If you use RStudio, adding citations is incredibly easy:
+
+- Open a Quarto file (`index.qmd` here)
+- From the two options _Source_ and _Visual_, choose _Visual_
+- Put your cursor where you want your citation
+- Click _Insert_ -> _Citation_
+- Search your citation. There are different ways to get it. Your Zotero library will also appear if you have the Zotero app installed
+
+If you know what you're looking for, there's an easier way by writing a `@` in _Visual_ mode where you want the citation, and RStudio will automatically open a search menu for you to choose.
 
 ## Ensure reproducibility with renv
 
