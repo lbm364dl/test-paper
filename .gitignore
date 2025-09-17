@@ -1,3 +1,8 @@
 /.quarto/
 /_manuscript/
 trackdown_access.json
+.Rproj.user/
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
