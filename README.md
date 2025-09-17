@@ -1,6 +1,18 @@
 This README is a work in progress.
 
-Papers can be reproducible. You can (and should) have everything necessary in one place.
+Papers can be reproducible. You can (and should) have everything necessary to generate your paper in one place. This is the place.
+
+## TLDR: How to use this
+
+1. [Install Quarto](https://quarto.org/docs/get-started/).
+2. Open a command line and run `quarto install tinytex`. Quarto first converts your file to [LaTeX](https://en.wikipedia.org/wiki/LaTeX) and then uses that to generate your PDF. This command installs a minimal LaTeX.
+3. If you use RStudio, you can open this as an RStudio project. Otherwise you probably know what you're doing.
+4. You write your paper in `index.qmd`. This is a [Quarto](https://quarto.org/) file. Just go and take a look. Make some edits. You'll figure out the details.
+5. You get your PDF by running `quarto render` in your command line or clicking [some render button in your RStudio](https://quarto.org/docs/get-started/hello/rstudio.html#rendering).
+6. If you got problems with the previous step because of some missing R package, we got you covered. Just run `renv::restore()` in R to install all necessary packages!
+7. You check the output PDF in `_manuscript/index.pdf`. If you're not satisfied, go back to step 4. Make more changes to your `index.qmd`.
+8. (Optional) Your collaborators don't know anything about git or coding but want to make suggestions. Just send them a Google Docs link and then you [take care of syncing both places](#sync-workflow-and-automatic-previews). OK, this one needs a bit of configuration to set up. If you need it, go read about [collaborator editing with trackdown](#allow-collaborator-editing-with-trackdown).
+9. (Optional) Some researcher wants to reproduce your work. Just send them a link to your GitHub repository. Seriously, that's all. OK, for this to be bullet-proof, you need to be careful on how you set up package dependencies if you write R code in your project. See [reproducibility with renv](#ensure-reproducibility-with-renv).
 
 ## Write a paper with Quarto
 
@@ -11,6 +23,12 @@ The best way to write an automated and reproducible paper is by using [Quarto](h
 - You can customize a PDF format by defining the template used by the journals you want to publish in.
 - You can include code chunks in Quarto files and they will be executed and their output automatically included in the final document.
 - You can easily include references by defining them in `references.bib` and using their name in Quarto files.
+
+## Integrate your Zotero references seamlessly
+
+If you know what [BibTeX](https://www.bibtex.org/) is, go ahead, see how the file `references.bib` is used. See the `[@knuth84]` usage in the sample `index.qmd`.
+
+Otherwise, if you use RStudio... TODO: explain how to configure Zotero and RStudio to directly search references from Zotero.
 
 ## Ensure reproducibility with renv
 
@@ -33,20 +51,36 @@ There are three functions you most likely need. Be careful! They overwrite every
 
 ## (Optional) Don't die configuring trackdown
 
-If you want collaborators to suggest changes in a Google Docs, you will need a few one time configuration steps so that trackdown can read/write your files. Of course, this is only if you trust it! The trackdown package is open-source, so you could check that [nothing fishy is going on](https://github.com/ClaudioZandonella/trackdown).
+If you want collaborators to suggest changes in a Google Docs, you will need a few one time configuration steps so that trackdown can read/write your files. Of course, this is only if you trust it! The trackdown package is open-source, so you could check that [nothing fishy is going on](https://github.com/ClaudioZandonella/trackdown). If you feel safer, you could also create a new Google account just for this usage.
 
-1. TODO: add previous steps from creating Google Cloud Platform project
-2. Create credentials for trackdown:
-  - Go to APIs & Services -> Credentials -> Create credentials -> OAuth client ID
-  - Fill credential info:
+1. Open [your Google Cloud Platform project](https://console.cloud.google.com/), signed in with your desired Google account.
+2. Open [this link](https://console.cloud.google.com/auth/overview/create) to create an _app_ (whatever that means). Fill things:
+    - App Information:
+        - App name: whatever, e.g., Trackdown
+        - User support email: your own email
+    - Audience: external
+    - Contact Information: your own email
+    - Finish: agree
+    - Finally, create
+3. Open [this link](https://console.cloud.google.com/auth/audience) to add yourself as test user (whatever that means).
+    - In _Test users_, click _Add users_
+    - Add your own email
+    - Click _Save_ (twice if necessary)
+4. Open [this link](https://console.cloud.google.com/apis/library/drive.googleapis.com) and click _Enable_ to allow programmatic access to Google Drive.
+5. Open [this link](https://console.cloud.google.com/apis/library/docs.googleapis.com) and click _Enable_ to allow programmatic access to Google Docs.
+6. Open [this link](https://console.cloud.google.com/auth/clients/create) to create an OAuth client ID (whatever that means). Fill things:
     - Application type: Desktop app
     - Name: whatever, e.g. Trackdown
-  - Click create
-  - Download JSON with credentials. The name should be something like `client_secret_some_long_code.apps.googleusercontent.com.json`.
-3. Use credentials. Put this JSON file in this main folder and rename as `trackdown_access.json`. This is read from `.Rprofile` every time you open an R session here. When using trackdown update/download functions, the first time you will be asked to grant access.
-4. Use trackdown! Check the previous section for functions summary.
+    - Click create
+    - Click  _Download JSON_. The name of the downloaded file should be something like `client_secret_some_long_code.apps.googleusercontent.com.json`.
+7. Actually use these credentials:
+    - Put that JSON file in this main folder (the same folder where this `README.md` file is).
+    - Rename it as `trackdown_access.json`. The `.json` is the extension, and you might not need to write it if you use e.g. Windows file explorer. If something goes wrong, make sure you didn't name it `trackdown_access.json.json` by mistake.
+8. Restart your R session. Your credentials are read automatically from `.Rprofile` every time you open an R session here. If you already had an open session while setting the credentials file, it won't be read until you restart the session.
+9. Actually use trackdown! Check the [previous section](#allow-collaborator-editing-with-trackdown) for the important functions. When using trackdown update/download functions, the first time you will be asked to grant access in your browser. **Toggle the _allow read/write access_ button before continuing**. Otherwise it won't work.
 
 ## Sync workflow and automatic previews
 
 TODO: explain how to work with both changes in this project and changes in Google doc, use separate branches, see automatic preview in PRs...
 
+TODO: allow both private and public repository setup (assuming private only while the paper is WIP, if desired)
