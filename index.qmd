@@ -79,9 +79,7 @@ This is new
 
 ![test image](imgs/test.png)
 
-This is new content. Please. Please accept it.
-Please.
-
+This is new content. Please. Please accept it. Please.
 
 This is new content.
 
