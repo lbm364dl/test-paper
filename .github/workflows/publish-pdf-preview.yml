@@ -47,6 +47,7 @@ jobs:
 
       - name: Find Comment
         uses: peter-evans/find-comment@v3
+        if: ${{ github.event.repository.private == false }}
         id: fc
         with:
           issue-number: ${{ github.event.pull_request.number }}
@@ -60,3 +61,4 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             ✅ PDF preview is ready: [preview.pdf](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.number }}-preview.pdf)
+
