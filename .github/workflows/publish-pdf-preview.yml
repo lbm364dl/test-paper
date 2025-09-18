@@ -53,10 +53,22 @@ jobs:
           comment-author: 'github-actions[bot]'
           body-includes: PDF preview is ready
 
+      # Public url for preview using GitHub pages site
       - name: Create comment
-        if: steps.fc.outputs.comment-id == ''
+        if: ${{ github.event.repository.private == false && steps.fc.outputs.comment-id == '' }}
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             ✅ PDF preview is ready: [preview.pdf](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.number }}-preview.pdf)
+
+      # Private access url for preview using GitHub pages site
+      - name: Create comment
+        if: ${{ github.event.repository.private == true && steps.fc.outputs.comment-id == '' }}
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ✅ PDF preview is ready: [preview.pdf](https://github.com/${{ github.repository }}/blob/gh-pages/pr-${{ github.event.number }}-preview.pdf)
+            Keep in mind that your repository is private, so you can't share the URL with anyone. Consider instead downloading and sharing the file directly, or making the repository public.
+
