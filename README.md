@@ -92,10 +92,8 @@ If you want collaborators to suggest changes in a Google Docs, you will need a f
 1. The `main` branch must contain the most up to date reviewed version of the paper.
 2. The `sync-google-doc` branch will be up to date with the Google Docs version of your paper.
 3. When a certain review stage finishes, you download the content into `sync-google-doc` with trackdown and create a Pull Request from `sync-google-doc` to `main`.
-4. If your repository is public (TODO: also mention private case), you will see a preview of the PDF result in the Pull Request after a while.
+4. You will see a preview of the PDF result in the Pull Request after a while.
 5. If you're satisfied with the result, you merge into `main`.
 6. If you want to add new content yourself right here, you create your own branch. When you're done, you merge to `main`.
 7. If there are local changes not in the Google doc, you do `git pull origin main` from the `sync-google-doc` branch to update it. You then update the Google doc using trackdown. **Please have a clean Google doc stage (no pending reviews) before, otherwise you may lose changes when overwriting.**
 8. Ask for a new review. Go back to step 3.
-
-TODO: allow both private and public repository setup (assuming private only while the paper is WIP, if desired)
