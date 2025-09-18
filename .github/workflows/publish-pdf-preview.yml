@@ -55,7 +55,7 @@ jobs:
 
       # Public url for preview using GitHub pages site
       - name: Create comment
-        if: ${{ github.event.repository.private == false }} && steps.fc.outputs.comment-id == ''
+        if: ${{ github.event.repository.private == false && steps.fc.outputs.comment-id == '' }}
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.pull_request.number }}
@@ -64,7 +64,7 @@ jobs:
 
       # Private access url for preview using GitHub pages site
       - name: Create comment
-        if: ${{ github.event.repository.private == true }} && steps.fc.outputs.comment-id == ''
+        if: ${{ github.event.repository.private == true && steps.fc.outputs.comment-id == '' }}
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.pull_request.number }}
